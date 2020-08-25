@@ -1,11 +1,17 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Manager;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.List;
 
-public interface Managerdao {
-    List<Manager> query(String mgname, String mgpwd);
+@Mapper
+public interface Managerdao extends tk.mybatis.mapper.common.Mapper<Manager> {
+
+    @Select("select * from manager where mgname=#{mgname} and mgpwd=mgpwd ")
+    List<Manager> queryNamePwd(String mgname, String mgpwd);
     List<Manager> querySearch(String mgname);
     List<Manager> querylikeSearch(String mgname);
     int queryBynameandpwd(String mgname, String mgpwd);

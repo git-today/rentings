@@ -19,6 +19,40 @@
     </properties>
 
     <dependencies>
+
+        <!--&lt;!&ndash;导入mysql jar包&ndash;&gt;-->
+        <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.18</version>
+        </dependency>
+
+        <!-- 引入mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <!-- 通用Mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper </groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -35,11 +69,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>5.1.35</version>-->
+        <!--</dependency>-->
         <!--Start：阿里云天气依赖-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
