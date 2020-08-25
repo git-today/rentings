@@ -1,7 +1,13 @@
 package com.aaa.entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //后台账户表
+@Table(name = "manager")
 public class Manager {
     //账号编号
+    @Id
     private Integer mgid;
    //账号名
     private String mgname;

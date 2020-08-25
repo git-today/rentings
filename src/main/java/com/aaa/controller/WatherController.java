@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.net.SocketException;
-@CrossOrigin
+//@CrossOrigin
 @Controller
 @RequestMapping(value = "wather",produces = { "application/json;charset=UTF-8" })
 public class WatherController {
