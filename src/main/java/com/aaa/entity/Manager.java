@@ -1,13 +1,21 @@
 package com.aaa.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 //后台账户表
 public class Manager {
     //账号编号
+    @Id
     private Integer mgid;
    //账号名
+    @Column
     private String mgname;
    // 密码
+   @Column
     private String mgpwd;
    //账号状态
+   @Column
     private int mgstate;
 
     public Integer getMgid() {
