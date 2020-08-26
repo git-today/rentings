@@ -9,25 +9,28 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Table(name = "ad_photo")
-public class Ad_photo {
+public class Adphoto {
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL)
     @Column(name = "adid")
     private Integer adid;
+    @Column(name = "phototype")
+    private Integer phototype;
     @Column(name = "adphoto")
     private String adphoto;
-    List<Advertising> advertisingList;
+    private List<Advertising> list;
 
-    public Ad_photo() {
+    public Adphoto() {
         super();
     }
 
     @Override
     public String toString() {
-        return "Ad_photo{" +
+        return "Adphoto{" +
                 "adid=" + adid +
+                ", phototype=" + phototype +
                 ", adphoto='" + adphoto + '\'' +
-                ", advertisingList=" + advertisingList +
+                ", list=" + list +
                 '}';
     }
 
@@ -39,6 +42,14 @@ public class Ad_photo {
         this.adid = adid;
     }
 
+    public Integer getPhototype() {
+        return phototype;
+    }
+
+    public void setPhototype(Integer phototype) {
+        this.phototype = phototype;
+    }
+
     public String getAdphoto() {
         return adphoto;
     }
@@ -47,17 +58,18 @@ public class Ad_photo {
         this.adphoto = adphoto;
     }
 
-    public List<Advertising> getAdvertisingList() {
-        return advertisingList;
+    public List<Advertising> getList() {
+        return list;
     }
 
-    public void setAdvertisingList(List<Advertising> advertisingList) {
-        this.advertisingList = advertisingList;
+    public void setList(List<Advertising> list) {
+        this.list = list;
     }
 
-    public Ad_photo(Integer adid, String adphoto, List<Advertising> advertisingList) {
+    public Adphoto(Integer adid, Integer phototype, String adphoto, List<Advertising> list) {
         this.adid = adid;
+        this.phototype = phototype;
         this.adphoto = adphoto;
-        this.advertisingList = advertisingList;
+        this.list = list;
     }
 }
