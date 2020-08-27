@@ -19,7 +19,7 @@ public class House {
     @Column
     private String hmode; //租赁方式
     @Column
-    private double hprice; //租金
+    private Double hprice; //租金
     @Column
     private String hspace; //房屋面积
     @Column
@@ -97,11 +97,11 @@ public class House {
         this.hmode = hmode;
     }
 
-    public double getHprice() {
+    public Double getHprice() {
         return hprice;
     }
 
-    public void setHprice(double hprice) {
+    public void setHprice(Double hprice) {
         this.hprice = hprice;
     }
 

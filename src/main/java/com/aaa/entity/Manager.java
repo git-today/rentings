@@ -16,7 +16,7 @@ public class Manager {
     private String mgpwd;
    //账号状态
    @Column
-    private int mgstate;
+    private Integer mgstate;
 
     public Integer getMgid() {
         return mgid;
@@ -42,11 +42,11 @@ public class Manager {
         this.mgpwd = mgpwd;
     }
 
-    public int getMgstate() {
+    public Integer getMgstate() {
         return mgstate;
     }
 
-    public void setMgstate(int mgstate) {
+    public void setMgstate(Integer mgstate) {
         this.mgstate = mgstate;
     }
 
