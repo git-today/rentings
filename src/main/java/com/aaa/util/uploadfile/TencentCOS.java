@@ -69,7 +69,7 @@ public class TencentCOS {
      * @Description: 下载文件
      * @return
      */
-    public static void downFile() {
+    /*public static void downFile() {
     	// 生成cos客户端
     	COSClient cosclient = new COSClient(cred, clientConfig);
     	//要下载的文件路径和名称
@@ -79,7 +79,7 @@ public class TencentCOS {
         // 指定要下载的文件所在的 bucket 和对象键
         GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName, key);
         ObjectMetadata downObjectMeta = cosclient.getObject(getObjectRequest, downFile);
-    }
+    }*/
 	
 
 	/**

@@ -1,0 +1,82 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.HouseDao_Y">
+    <resultMap id="houseMap" type="com.aaa.entity.House_Y">
+        <id column="hid" property="hid"></id>
+        <result column="harea" property="harea"></result>
+        <result column="hcommunity" property="hcommunity"></result>
+        <result column="htshi" property="htshi"></result>
+        <result column="hting" property="hting"></result>
+        <result column="htwei" property="htwei"></result>
+        <result column="hmode" property="hmode"></result>
+        <result column="hprice" property="hprice"></result>
+        <result column="hspace" property="hspace"></result>
+        <result column="hpaymethod" property="hpaymethod"></result>
+        <result column="htime" property="htime"></result>
+        <result column="hpid" property="hpid"></result>
+        <result column="hadress" property="hadress"></result>
+        <result column="udescribe" property="udescribe"></result>
+        <result column="htid" property="htid"></result>
+        <result column="hstate" property="hstate"></result>
+        <result column="aid" property="aid"></result>
+        <association property="house_mating" autoMapping="true" javaType="com.aaa.entity.House_mating"
+                     fetchType="lazy"></association>
+        <association property="account_y" autoMapping="true" javaType="com.aaa.entity.Account_Y"
+                     fetchType="lazy"></association>
+        <collection property="list"
+                    select="photo" column="hid">
+            <result column="hid" property="hid"></result>
+            <result column="hphoto" property="hphoto"></result>
+            <result column="hpid" property="hpid"></result>
+        </collection>
+
+    </resultMap>
+    <select id="findAll" resultMap="houseMap">
+        SELECT * FROM house h inner JOIN house_mating m ON h.htid = m.htid
+        inner JOIN account a ON h.aid=a.aid
+        <where>
+            <if test="hadress!=null and hadress !=''">
+                and h.hadress like '%${hadress}%'
+            </if>
+            <if test="harea!=null and harea !=''">
+                and CONCAT(h.harea,h.hcommunity) like '%${harea}%'
+            </if>
+            <if test="hprice1 !=null and hprice1 !='' and hprice2!=null and hprice2 !=''">
+                and h.hprice BETWEEN #{hprice1} AND #{hprice2}
+            </if>
+            <if test="hmode!=null and hmode != '' or hmode == 0">
+                and h.hmode = #{hmode}
+            </if>
+            <if test="htshi != null and  htshi != ''">
+                <if test="htshi != '6室'">
+                    and h.htshi = #{htshi}
+                </if>
+                <if test="htshi == '6室'">
+                    and h.htshi not IN ('1室','2室','3室','4室','5室')
+                </if>
+            </if>
+            <if test="htdirect != null and htdirect !=''">
+                and m.htdirect = #{htdirect}
+            </if>
+            <if test="hfloor != null and hfloor != ''">
+                <if test="hfloor == '低层'">
+                    and hfloor+0  &lt;= 10
+                </if>
+                <if test="hfloor == '中层'">
+                    and m.hfloor+0  &gt; 10 AND hfloor &lt;= 20
+                </if>
+                <if test="hfloor == '高层'">
+                    and m.hfloor+0 &gt; 20
+                </if>
+            </if>
+            <if test="htype != null and htype != ''">
+                and m.htype like '%${htype}%'
+            </if>
+        </where>
+    </select>
+    <select id="photo" resultType="com.aaa.entity.House_photo_Y">
+        SELECT * FROM house_photo WHERE hid=#{hid};
+    </select>
+
+</mapper>

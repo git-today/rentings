@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.AdphotoDao">
+    <resultMap id="photoMap" type="com.aaa.entity.Adphoto" autoMapping="true">
+        <collection property="list" autoMapping="true" ofType="com.aaa.entity.Advertising" fetchType="eager"></collection>
+    </resultMap>
+    <select id="findBidPhoto" resultMap="photoMap">
+        SELECT * FROM advertising a LEFT JOIN ad_photo p
+        ON a.adid=p.adid WHERE a.adstate=0 AND p.phototype=0
+    </select>
+</mapper>
