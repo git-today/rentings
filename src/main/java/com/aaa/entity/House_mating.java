@@ -1,10 +1,14 @@
 package com.aaa.entity;
 
+import tk.mybatis.mapper.annotation.KeySql;
+import tk.mybatis.mapper.code.IdentityDialect;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 
 public class House_mating {
     @Id
+    @KeySql(dialect = IdentityDialect.MYSQL)
     private Integer htid;
     @Column
     private String htype;
@@ -32,6 +36,27 @@ public class House_mating {
     private String hfloor;
     @Column
     private String hfloors;
+
+    public House_mating() {
+        super();
+    }
+
+    public House_mating(Integer htid, String htype, String htdirect, Integer htbed, Integer htcar, Integer htweb, Integer htv, Integer htwashing, Integer htheating, Integer htait, Integer htrfrt, Integer htheater, String hfloor, String hfloors) {
+        this.htid = htid;
+        this.htype = htype;
+        this.htdirect = htdirect;
+        this.htbed = htbed;
+        this.htcar = htcar;
+        this.htweb = htweb;
+        this.htv = htv;
+        this.htwashing = htwashing;
+        this.htheating = htheating;
+        this.htait = htait;
+        this.htrfrt = htrfrt;
+        this.htheater = htheater;
+        this.hfloor = hfloor;
+        this.hfloors = hfloors;
+    }
 
     public Integer getHtid() {
         return htid;

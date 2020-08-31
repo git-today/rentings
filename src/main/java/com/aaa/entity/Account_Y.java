@@ -5,10 +5,12 @@ import tk.mybatis.mapper.code.IdentityDialect;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Account {
-    //用户账号编号
+@Table(name = "account")
+public class Account_Y {
     @Id
+    @KeySql(dialect = IdentityDialect.MYSQL)
     @Column(name="aid") //数据库查询时用到的名字
     private Integer id; //返回数据到vue页面时用的名字
     @Column
@@ -20,8 +22,6 @@ public class Account {
     @Column
     private Integer astate;//用户账号状态
     @Column
-    private Integer usex;//用户性别
-    @Column
     private String aname;//身份证姓名
     @Column
     private String anumber;//身份证号
@@ -32,11 +32,27 @@ public class Account {
     @Column
     private String adescribe;//用户描述
 
+    @Override
+    public String toString() {
+        return "Account_Y{" +
+                "id=" + id +
+                ", aphone='" + aphone + '\'' +
+                ", apwd='" + apwd + '\'' +
+                ", apost=" + apost +
+                ", astate=" + astate +
+                ", aname='" + aname + '\'' +
+                ", anumber='" + anumber + '\'' +
+                ", aborth='" + aborth + '\'' +
+                ", adress='" + adress + '\'' +
+                ", adescribe='" + adescribe + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public void setAid(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -70,14 +86,6 @@ public class Account {
 
     public void setAstate(Integer astate) {
         this.astate = astate;
-    }
-
-    public Integer getUsex() {
-        return usex;
-    }
-
-    public void setUsex(Integer usex) {
-        this.usex = usex;
     }
 
     public String getAname() {
@@ -120,38 +128,20 @@ public class Account {
         this.adescribe = adescribe;
     }
 
-    public Account() {
+    public Account_Y() {
         super();
     }
 
-    public Account(Integer id, String aphone, String apwd, Integer apost, Integer astate, Integer usex, String aname, String anumber, String aborth, String adress, String adescribe) {
+    public Account_Y(Integer id, String aphone, String apwd, Integer apost, Integer astate, String aname, String anumber, String aborth, String adress, String adescribe) {
         this.id = id;
         this.aphone = aphone;
         this.apwd = apwd;
         this.apost = apost;
         this.astate = astate;
-        this.usex = usex;
         this.aname = aname;
         this.anumber = anumber;
         this.aborth = aborth;
         this.adress = adress;
         this.adescribe = adescribe;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "aid=" + id +
-                ", aphone='" + aphone + '\'' +
-                ", apwd='" + apwd + '\'' +
-                ", apost=" + apost +
-                ", astate=" + astate +
-                ", usex=" + usex +
-                ", aname='" + aname + '\'' +
-                ", anumber='" + anumber + '\'' +
-                ", aborth='" + aborth + '\'' +
-                ", adress='" + adress + '\'' +
-                ", adescribe='" + adescribe + '\'' +
-                '}';
     }
 }

@@ -1,10 +1,17 @@
 package com.aaa.entity;
 
+import tk.mybatis.mapper.annotation.KeySql;
+import tk.mybatis.mapper.code.IdentityDialect;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.List;
 
-public class House {
+@Table(name = "house")
+public class House_Y {
     @Id
+    @KeySql(dialect = IdentityDialect.MYSQL)
     private Integer hid; //编号
     @Column
     private String harea; //区域
@@ -40,30 +47,42 @@ public class House {
     private Integer hstate; //房间状态
     @Column
     private Integer aid; //房主信息
+    //关联配套房源
+    private House_mating house_mating;
+    //关联房屋图片
+    private List<House_photo_Y> list;
+    //关联用户
+    private Account_Y account_y;
 
-    public House() {
+    public House_Y() {
         super();
     }
 
-    public House(Integer hid, String harea, String hcommunity, String htshi, String hting, String htwei, String hmode, Double hprice, String hspace, String hpaymethod, String hlabel, String htime, String hpid, String hadress, String udescribe, Integer htid, Integer hstate, Integer aid) {
-        this.hid = hid;
-        this.harea = harea;
-        this.hcommunity = hcommunity;
-        this.htshi = htshi;
-        this.hting = hting;
-        this.htwei = htwei;
-        this.hmode = hmode;
-        this.hprice = hprice;
-        this.hspace = hspace;
-        this.hpaymethod = hpaymethod;
-        this.hlabel = hlabel;
-        this.htime = htime;
-        this.hpid = hpid;
-        this.hadress = hadress;
-        this.udescribe = udescribe;
-        this.htid = htid;
-        this.hstate = hstate;
-        this.aid = aid;
+    @Override
+    public String toString() {
+        return "House_Y{" +
+                "hid=" + hid +
+                ", harea='" + harea + '\'' +
+                ", hcommunity='" + hcommunity + '\'' +
+                ", htshi='" + htshi + '\'' +
+                ", hting='" + hting + '\'' +
+                ", htwei='" + htwei + '\'' +
+                ", hmode='" + hmode + '\'' +
+                ", hprice=" + hprice +
+                ", hspace='" + hspace + '\'' +
+                ", hpaymethod='" + hpaymethod + '\'' +
+                ", hlabel='" + hlabel + '\'' +
+                ", htime='" + htime + '\'' +
+                ", hpid='" + hpid + '\'' +
+                ", hadress='" + hadress + '\'' +
+                ", udescribe='" + udescribe + '\'' +
+                ", htid=" + htid +
+                ", hstate=" + hstate +
+                ", aid=" + aid +
+                ", house_mating=" + house_mating +
+                ", list=" + list +
+                ", account_y=" + account_y +
+                '}';
     }
 
     public Integer getHid() {
@@ -210,27 +229,51 @@ public class House {
         this.aid = aid;
     }
 
-    @Override
-    public String toString() {
-        return "House{" +
-                "hid=" + hid +
-                ", harea='" + harea + '\'' +
-                ", hcommunity='" + hcommunity + '\'' +
-                ", htshi='" + htshi + '\'' +
-                ", hting='" + hting + '\'' +
-                ", htwei='" + htwei + '\'' +
-                ", hmode='" + hmode + '\'' +
-                ", hprice=" + hprice +
-                ", hspace='" + hspace + '\'' +
-                ", hpaymethod='" + hpaymethod + '\'' +
-                ", hlabel='" + hlabel + '\'' +
-                ", htime='" + htime + '\'' +
-                ", hpid='" + hpid + '\'' +
-                ", hadress='" + hadress + '\'' +
-                ", udescribe='" + udescribe + '\'' +
-                ", htid=" + htid +
-                ", hstate=" + hstate +
-                ", aid=" + aid +
-                '}';
+    public House_mating getHouse_mating() {
+        return house_mating;
+    }
+
+    public void setHouse_mating(House_mating house_mating) {
+        this.house_mating = house_mating;
+    }
+
+    public List<House_photo_Y> getList() {
+        return list;
+    }
+
+    public void setList(List<House_photo_Y> list) {
+        this.list = list;
+    }
+
+    public Account_Y getAccount_y() {
+        return account_y;
+    }
+
+    public void setAccount_y(Account_Y account_y) {
+        this.account_y = account_y;
+    }
+
+    public House_Y(Integer hid, String harea, String hcommunity, String htshi, String hting, String htwei, String hmode, Double hprice, String hspace, String hpaymethod, String hlabel, String htime, String hpid, String hadress, String udescribe, Integer htid, Integer hstate, Integer aid, House_mating house_mating, List<House_photo_Y> list, Account_Y account_y) {
+        this.hid = hid;
+        this.harea = harea;
+        this.hcommunity = hcommunity;
+        this.htshi = htshi;
+        this.hting = hting;
+        this.htwei = htwei;
+        this.hmode = hmode;
+        this.hprice = hprice;
+        this.hspace = hspace;
+        this.hpaymethod = hpaymethod;
+        this.hlabel = hlabel;
+        this.htime = htime;
+        this.hpid = hpid;
+        this.hadress = hadress;
+        this.udescribe = udescribe;
+        this.htid = htid;
+        this.hstate = hstate;
+        this.aid = aid;
+        this.house_mating = house_mating;
+        this.list = list;
+        this.account_y = account_y;
     }
 }
