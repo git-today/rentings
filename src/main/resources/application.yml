@@ -19,7 +19,6 @@ mybatis:
   type-aliases-package: com.aaa.dao
   mapper-locations: classpath:mapper/*.xml
 
-
 #  thymeleaf:
 #    cache: false  # 使用模板缓存
 #    suffix: .html
@@ -27,7 +26,4 @@ mybatis:
 #    prefix: classpath:/templates/
 #    mode: HTML5
 
-mybatis:
-  type-aliases-package: com.aaa.dao
-  mapper-locations: classpath:mapper/*.xml
 

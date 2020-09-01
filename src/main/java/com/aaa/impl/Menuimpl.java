@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 @Service
@@ -18,37 +19,12 @@ public class Menuimpl implements  Menuservice {
     Menudao menudao;
 
     @Override
-    public int add(Menu menu) {
-        return menudao.add(menu);
+    public List<Map<String, Object>> menuone(Integer role_id) {
+        return menudao.menuone(role_id);
     }
 
     @Override
-    public int update(Menu menu) {
-        return menudao.update(menu);
-    }
-
-    @Override
-    public int delete(int mid) {
-        return menudao.delete(mid);
-    }
-
-    @Override
-    public List<Menu> query() {
-        return menudao.query();
-    }
-
-    @Override
-    public Map<String, Object> queryId(Integer mid) {
-        return menudao.queryId(mid);
-    }
-
-    @Override
-    public List<Map<String, Object>> queryByRidParentmid(Integer rid, Integer parent_mid) {
-        return menudao.queryByRidParentmid(rid,parent_mid);
-    }
-
-    @Override
-    public List<Map<String, Object>> queryByParentmid(Integer rid, Integer parent_mid) {
-            return menudao.queryByParentmid(rid,parent_mid);
+    public List<Map<String, Object>> menutwo(Integer role_id, Integer parent_mid) {
+        return menudao.menutwo(role_id,parent_mid);
     }
 }

@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Menu;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -9,18 +10,25 @@ import java.util.Map;
 @Mapper
 public interface Menudao extends  tk.mybatis.mapper.common.Mapper<Menu>{
 
-    int add(Menu menu);
+    @Select("SELECT * from menu where mid in (SELECT mid from Role_menu WHERE role_id=#{role_id}) and parent_mid=0")
+    List<Map<String, Object>> menuone(Integer role_id);
 
-    int update(Menu menu);
+    @Select("select menu.*,(select count(role_id) from role_menu where role_menu.role_id=#{role_id}\n" +
+            "And role_menu.mid=menu.mid) from menu \n" +
+            "where menu.parent_mid=#{parent_mid}")
+    List<Map<String, Object>> menutwo(Integer role_id, Integer parent_mid);
 
-    int delete(int mid);
+    Integer menu_insert(Menu menu);
 
-    List<Menu> query();
+    @Select("select * from menu where parent_mid=0")
+    List<Map<String,Object>> menu_query();
 
-    Map<String, Object> queryId(Integer mid);
+    @Select("select * from menu where parent_mid=#{mid}")
+    List<Map<String,Object>> menu_twoQueryAll(Integer mid);
 
-    @Select("SELECT * from menu where mid in (SELECT mid from Role_menu WHERE role_id=?) and parent_mid=?")
-    List<Map<String, Object>> queryByRidParentmid(Integer role_id, Integer parent_mid);
+    Integer menu_update(Menu menu);
 
-    List<Map<String, Object>> queryByParentmid(Integer role_id, Integer parent_mid);
+    @Delete("delete from menu where mid=#{mid}")
+    Integer menu_delete(Integer mid);
+
 }

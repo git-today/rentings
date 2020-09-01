@@ -13,19 +13,10 @@ import java.util.Map;
 @Service
 public interface Menuservice {
 
+    public List<Map<String, Object>> menuone(Integer role_id);
 
-    public int add(Menu menu) ;
+    public List<Map<String, Object>> menutwo(Integer role_id, Integer parent_mid) ;
 
-    public int update(Menu menu) ;
 
-    public int delete(int mid);
-
-    public List<Menu> query() ;
-
-    public Map<String, Object> queryId(Integer mid);
-
-    public List<Map<String, Object>> queryByRidParentmid(Integer rid, Integer parent_mid);
-
-    public List<Map<String, Object>> queryByParentmid(Integer rid, Integer parent_mid) ;
 
 }
