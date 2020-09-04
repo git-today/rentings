@@ -32,10 +32,21 @@
         </collection>
 
     </resultMap>
+    <!--模糊查询-->
     <select id="findAll" resultMap="houseMap">
-        SELECT * FROM house h inner JOIN house_mating m ON h.htid = m.htid
+        SELECT
+        h.hid,h.harea,h.hcommunity,h.htshi,h.hting,h.htwei,h.hmode,h.hprice,
+        h.hspace,h.hpaymethod,h.hlabel,h.htime,h.hpid,h.hadress,h.udescribe,h.htid,
+        h.hstate,h.aid,
+        m.htid,m.htype,m.htdirect,m.htbed,m.htcar,m.htweb,m.htv,m.htwashing,
+        m.htheating,m.htait,m.htrfrt,m.htheater,m.hfloor,m.hfloors,
+        a.aid,a.aphone,a.aname
+        FROM house h inner JOIN house_mating m ON h.htid = m.htid
         inner JOIN account a ON h.aid=a.aid
         <where>
+            <if test="searchs != null and searchs != ''">
+                and CONCAT(h.hadress,h.harea,h.hcommunity) LIKE '%${searchs}%'
+            </if>
             <if test="hadress!=null and hadress !=''">
                 and h.hadress like '%${hadress}%'
             </if>
@@ -61,10 +72,10 @@
             </if>
             <if test="hfloor != null and hfloor != ''">
                 <if test="hfloor == '低层'">
-                    and hfloor+0  &lt;= 10
+                    and hfloor+0 &lt;= 10
                 </if>
                 <if test="hfloor == '中层'">
-                    and m.hfloor+0  &gt; 10 AND hfloor &lt;= 20
+                    and m.hfloor+0 &gt; 10 AND hfloor &lt;= 20
                 </if>
                 <if test="hfloor == '高层'">
                     and m.hfloor+0 &gt; 20
@@ -74,7 +85,68 @@
                 and m.htype like '%${htype}%'
             </if>
         </where>
+        <if test="hpriceOrder != null and hpriceOrder != ''">
+            <if test="hpriceOrder == 'ASC'">
+                ORDER BY h.hprice ASC
+            </if>
+            <if test="hpriceOrder == 'DESC'">
+                ORDER BY h.hprice DESC
+            </if>
+        </if>
+        <if test="hspaceOrder != null and hspaceOrder != ''">
+            <if test="hspaceOrder == 'ASC'">
+                ORDER BY h.hspace ASC
+            </if>
+            <if test="hspaceOrder == 'DESC'">
+                ORDER BY h.hspace DESC
+            </if>
+        </if>
     </select>
+
+    <!--按id查询  跳转至详情页面-->
+    <select id="fingById" resultMap="houseMap">
+        SELECT
+        h.hid,h.harea,h.hcommunity,h.htshi,h.hting,h.htwei,h.hmode,h.hprice,
+        h.hspace,h.hpaymethod,h.hlabel,h.htime,h.hpid,h.hadress,h.udescribe,h.htid,
+        h.hstate,h.aid,
+        m.htid,m.htype,m.htdirect,m.htbed,m.htcar,m.htweb,m.htv,m.htwashing,
+        m.htheating,m.htait,m.htrfrt,m.htheater,m.hfloor,m.hfloors,
+        a.aid,a.aphone,a.aname
+         FROM house h inner JOIN house_mating m ON h.htid = m.htid
+        inner JOIN account a ON h.aid=a.aid where h.hid = #{hid}
+    </select>
+
+    <!-- 首页随机显示4条数据-->
+    <select id="findFiveLimit" resultMap="houseMap">
+    SELECT
+    h.hid,h.harea,h.hcommunity,h.htshi,h.hting,h.htwei,h.hmode,h.hprice,
+    h.hpaymethod,h.hlabel,h.htime,h.hpid,h.hadress,h.udescribe,h.htid,
+    h.hstate,h.aid,
+    m.htid,m.htype,m.htdirect,m.htbed,m.htcar,m.htweb,m.htv,m.htwashing,
+    m.htheating,m.htait,m.htrfrt,m.htheater,m.hfloor,m.hfloors,
+    a.aid,a.aphone
+    FROM house h INNER JOIN house_mating m
+    ON h.htid=m.htid INNER JOIN
+    account a ON a.aid=h.aid
+    WHERE h.hid >= (SELECT FLOOR( MAX(hid) * RAND()) FROM house )
+    ORDER BY h.hid LIMIT 12
+    </select>
+
+    <!--查询业主名下其他房源-->
+    <select id="fingOthersHouse" resultMap="houseMap">
+         SELECT
+ h.hid,h.harea,h.hcommunity,h.htshi,h.hting,h.htwei,h.hmode,h.hprice,
+ h.hspace,h.hpaymethod,h.hlabel,h.htime,h.hpid,h.hadress,h.udescribe,h.htid,
+ h.hstate,h.aid,
+m.htid,m.htype,m.htdirect,m.htbed,m.htcar,m.htweb,m.htv,m.htwashing,
+ m.htheating,m.htait,m.htrfrt,m.htheater,m.hfloor,m.hfloors,
+a.aid,a.aphone,a.aname FROM house h inner JOIN house_mating m ON h.htid = m.htid
+inner JOIN account a ON h.aid=a.aid
+WHERE h.aid =(SELECT aid FROM house WHERE hid=#{hid})
+AND h.hid !=#{hid} LIMIT 3
+    </select>
+
+    <!--通过id查询出对应的房间图片-->
     <select id="photo" resultType="com.aaa.entity.House_photo_Y">
         SELECT * FROM house_photo WHERE hid=#{hid};
     </select>

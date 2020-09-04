@@ -20,6 +20,23 @@ public class HouseService_Y {
         List<House_Y> list = houseDao_y.findAll(searchInfo);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
+    }
 
+    public House_Y fingById(Integer hid){
+        return houseDao_y.fingById(hid);
+    }
+
+    public House_Y selectById(Integer hid){
+        return houseDao_y.selectByPrimaryKey(hid);
+    }
+
+    /*首页随机显示*/
+    public List<House_Y> findFiveLimit(){
+        return houseDao_y.findFiveLimit();
+    }
+
+    /*查询也注名下其他房源*/
+    public List<House_Y> fingOthersHouse(Integer hid){
+        return houseDao_y.fingOthersHouse(hid);
     }
 }
