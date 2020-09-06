@@ -19,4 +19,6 @@ public interface HouseDao_Y extends tk.mybatis.mapper.common.Mapper<House_Y> {
     List<House_Y> findFiveLimit();
     //查询房主名下的其他房源
     List<House_Y> fingOthersHouse(Integer hid);
+    /*广告*/
+
 }

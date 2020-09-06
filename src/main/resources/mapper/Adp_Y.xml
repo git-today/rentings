@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.AdvertisingDao_Y">
+    <resultMap id="advMap" type="com.aaa.entity.Advertising_Y">
+        <id property="adid" column="adid"></id>
+        <result property="adname" column="adname"></result>
+        <result property="adcontent" column="adcontent"></result>
+        <result property="adprice" column="adprice"></result>
+        <result property="addate" column="addate"></result>
+        <result property="advertiser" column="advertiser"></result>
+        <result property="pid" column="pid"></result>
+        <result property="adStarttime" column="adStarttime"></result>
+        <result property="adEndtime" column="adEndtime"></result>
+        <result property="adstate" column="adstate"></result>
+        <collection property="list" column="adid" select="adpList">
+            <result column="adid" property="adid"></result>
+            <result column="phototype" property="phototype"></result>
+            <result column="adphoto" property="adphoto"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findLimit" resultMap="advMap">
+        SELECT * FROM advertising WHERE adstate=0  ORDER BY RAND() LIMIT 3
+    </select>
+
+    <select id="adpList" resultType="com.aaa.entity.Adphoto_Y">
+        select * from ad_photo where adid = #{adid}
+    </select>
+</mapper>
