@@ -1,35 +1,22 @@
 package com.aaa.entity;
 
-import tk.mybatis.mapper.annotation.KeySql;
-import tk.mybatis.mapper.code.IdentityDialect;
-
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 //后台账户表
 @Table(name = "manager")
-public class Manager  {
+public class Manager {
     //账号编号
     @Id
     private Integer mgid;
-    //账号名
+   //账号名
     private String mgname;
-    // 密码
+   // 密码
     private String mgpwd;
     //角色
     private Integer role_id;
-    //账号状态 是否禁用
-    private Integer mgstate;
-
-    public Integer getMgstate() {
-        return mgstate;
-    }
-
-    public void setMgstate(Integer mgstate) {
-        this.mgstate = mgstate;
-    }
+   //账号状态
+    private int mgstate;
 
     public Integer getMgid() {
         return mgid;
@@ -61,6 +48,14 @@ public class Manager  {
 
     public void setRole_id(Integer role_id) {
         this.role_id = role_id;
+    }
+
+    public int getMgstate() {
+        return mgstate;
+    }
+
+    public void setMgstate(int mgstate) {
+        this.mgstate = mgstate;
     }
 
     @Override

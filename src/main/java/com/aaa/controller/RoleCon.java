@@ -15,45 +15,50 @@ import java.util.Map;
 public class RoleCon {
     @Resource
     Roledao roleDao;
-    @RequestMapping("role_query")
-    public List<Role> rol_query(Role role){
-        return roleDao.select(role);
-    }
 
-    @RequestMapping("roleall")
-    public List<Role> query(){
+    //管理员查询，用于显示修改权限
+    @RequestMapping(value = "role_query",method = RequestMethod.POST)
+    public List<Role> role_query(){
         return roleDao.selectAll();
     }
 
-    @RequestMapping("role_update")
+    //修改管理员名
+    @RequestMapping(value = "role_update",method = RequestMethod.POST)
     public Integer rol_update(Role role){
         return roleDao.updateByPrimaryKey(role);
     }
 
-    @RequestMapping("role_delete")
-    public Integer rol_delete(Role role){
+    //删除
+    @RequestMapping(value = "role_delete",method = RequestMethod.POST)
+    public Integer rol_delete(@RequestBody Role role){
         return roleDao.deleteByPrimaryKey(role);
     }
 
-    @RequestMapping("role_insert")
+    //添加
+    @RequestMapping(value = "role_insert",method = RequestMethod.POST)
     public Integer rol_insert(Role role){
+//        role.setRole_id();
         return roleDao.insert(role);
     }
 
+
+    //管理员修改权限
     @RequestMapping("setAuthority")
     public Integer setAuthority(Integer role_id,Integer[] mid){
-        System.out.println("role_id:"+role_id);
-        System.out.println("mid:"+mid);
         int count=0;
         if(role_id!=null){
+            //删除管理员的功能模块
             roleDao.deleterole_menu(role_id);
             for (Integer p:mid){
+                //添加管理员的模块
                 roleDao.setAuthority(role_id,p);
                 count++;
             }
         }
         return count;
     }
+
+    //查询管理员模块对应的二级菜单
     @RequestMapping("queryRole_id")
     public List<Map<String,Object>> queryRole_id(Integer role_id){
         return roleDao.queryRole_id(role_id);

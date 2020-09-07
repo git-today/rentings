@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 @Service
@@ -25,6 +24,6 @@ public class Menuimpl implements  Menuservice {
 
     @Override
     public List<Map<String, Object>> menutwo(Integer role_id, Integer parent_mid) {
-        return menudao.menutwo(role_id,parent_mid);
+            return menudao.menutwo(role_id,parent_mid);
     }
 }

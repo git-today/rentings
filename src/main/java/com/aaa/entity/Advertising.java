@@ -25,10 +25,12 @@ public class Advertising {
     private String advertiser;
     @Column(name = "pid")
     private Integer pid;
-    @Column(name = "adStarttime")
-    private String adStarttime;
     @Column(name = "adEndtime")
     private String adEndtime;
+    @Column(name = "adStarttime")
+    private String adStarttime;
+    @Column(name = "adstate")
+    private Integer adstate;
 
     public Advertising() {
         super();
@@ -121,7 +123,15 @@ public class Advertising {
         this.adEndtime = adEndtime;
     }
 
-    public Advertising(Integer adid, String adname, String adcontent, Double adprice, String addate, String advertiser, Integer pid, String adStarttime, String adEndtime) {
+    public Integer getAdstate() {
+        return adstate;
+    }
+
+    public void setAdstate(Integer adstate) {
+        this.adstate = adstate;
+    }
+
+    public Advertising(Integer adid, String adname, String adcontent, Double adprice, String addate, String advertiser, Integer pid, String adStarttime, String adEndtime, Integer adstate) {
         this.adid = adid;
         this.adname = adname;
         this.adcontent = adcontent;
@@ -131,5 +141,6 @@ public class Advertising {
         this.pid = pid;
         this.adStarttime = adStarttime;
         this.adEndtime = adEndtime;
+        this.adstate = adstate;
     }
 }

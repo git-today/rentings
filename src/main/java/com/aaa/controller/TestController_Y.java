@@ -8,8 +8,8 @@ import com.aaa.service.HouseService_Y;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

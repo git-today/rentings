@@ -30,5 +30,4 @@ public interface Menudao extends  tk.mybatis.mapper.common.Mapper<Menu>{
 
     @Delete("delete from menu where mid=#{mid}")
     Integer menu_delete(Integer mid);
-
 }

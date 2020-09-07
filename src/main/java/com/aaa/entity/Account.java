@@ -18,7 +18,11 @@ public class Account {
     @Column
     private Integer apost;//用户账号类型
     @Column
-    private Integer astate;//用户账号状态
+    private Integer astate;//用户账号状态值
+
+    @Column
+    private Boolean state; //用户状态
+
     @Column
     private Integer usex;//用户性别
     @Column
@@ -31,6 +35,18 @@ public class Account {
     private String adress;//地址
     @Column
     private String adescribe;//用户描述
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -141,11 +157,12 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "aid=" + id +
+                "id=" + id +
                 ", aphone='" + aphone + '\'' +
                 ", apwd='" + apwd + '\'' +
                 ", apost=" + apost +
                 ", astate=" + astate +
+                ", state=" + state +
                 ", usex=" + usex +
                 ", aname='" + aname + '\'' +
                 ", anumber='" + anumber + '\'' +

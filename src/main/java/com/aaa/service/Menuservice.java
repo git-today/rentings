@@ -17,6 +17,4 @@ public interface Menuservice {
 
     public List<Map<String, Object>> menutwo(Integer role_id, Integer parent_mid) ;
 
-
-
 }

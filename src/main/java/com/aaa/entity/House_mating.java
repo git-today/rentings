@@ -9,7 +9,8 @@ import javax.persistence.Id;
 public class House_mating {
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL)
-    private Integer htid;
+    @Column(name = "htid")
+    private Integer id;
     @Column
     private String htype;
     @Column
@@ -41,8 +42,8 @@ public class House_mating {
         super();
     }
 
-    public House_mating(Integer htid, String htype, String htdirect, Integer htbed, Integer htcar, Integer htweb, Integer htv, Integer htwashing, Integer htheating, Integer htait, Integer htrfrt, Integer htheater, String hfloor, String hfloors) {
-        this.htid = htid;
+    public House_mating(Integer id, String htype, String htdirect, Integer htbed, Integer htcar, Integer htweb, Integer htv, Integer htwashing, Integer htheating, Integer htait, Integer htrfrt, Integer htheater, String hfloor, String hfloors) {
+        this.id = id;
         this.htype = htype;
         this.htdirect = htdirect;
         this.htbed = htbed;
@@ -58,12 +59,12 @@ public class House_mating {
         this.hfloors = hfloors;
     }
 
-    public Integer getHtid() {
-        return htid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setHtid(Integer htid) {
-        this.htid = htid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getHtype() {
@@ -173,7 +174,7 @@ public class House_mating {
     @Override
     public String toString() {
         return "House_mating{" +
-                "htid=" + htid +
+                "id=" + id +
                 ", htype='" + htype + '\'' +
                 ", htdirect='" + htdirect + '\'' +
                 ", htbed=" + htbed +

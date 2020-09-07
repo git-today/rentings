@@ -1,9 +1,16 @@
 package com.aaa.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 //角色表
 public class Role {
 //角色编号
+    @Id
+    @Column
     private Integer role_id;
    //角色名
+    @Column
     private String  role_name;
 
     public Integer getRole_id() {

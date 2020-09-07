@@ -24,4 +24,20 @@ public class House_matingController {
         return service.selectId(htid);
     }
 
+
+    //查询所有房源配套
+    @RequestMapping(value = "selectAll",method = RequestMethod.POST)
+    public PageInfo selectAll(@RequestBody Map<Object,Object> map){
+        int pageNum = (int) map.get("pageNum");
+        int pageSize = (int) map.get("pageSize");
+        return service.selectAll(pageNum,pageSize);
+    }
+
+    //修改房源配套
+    @RequestMapping(value = "updateByPrimaryKey",method = RequestMethod.POST)
+    public int updateByPrimaryKey(@RequestBody House_mating house_mating){
+        return service.updateByPrimaryKey(house_mating);
+    }
+
+
 }
