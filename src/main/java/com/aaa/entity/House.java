@@ -28,14 +28,14 @@ public class House {
     private String hlabel; //房屋标签
     @Column
     private String htime; //发布时长
-    @Column
-    private String hpid; //房屋图片
+//    @Column
+//    private String hpid; //房屋图片
     @Column
     private String hadress; //地址
     @Column
     private String  udescribe; //用户描述
-    @Column
-    private Integer htid; //房屋配套
+//    @Column
+//    private Integer htid; //房屋配套
     @Column
     private Integer hstate; //房间状态
     @Column
@@ -45,7 +45,7 @@ public class House {
         super();
     }
 
-    public House(Integer hid, String harea, String hcommunity, String htshi, String hting, String htwei, String hmode, Double hprice, String hspace, String hpaymethod, String hlabel, String htime, String hpid, String hadress, String udescribe, Integer htid, Integer hstate, Integer aid) {
+    public House(Integer hid, String harea, String hcommunity, String htshi, String hting, String htwei, String hmode, Double hprice, String hspace, String hpaymethod, String hlabel, String htime,String hadress, String udescribe, Integer hstate, Integer aid) {
         this.hid = hid;
         this.harea = harea;
         this.hcommunity = hcommunity;
@@ -58,10 +58,8 @@ public class House {
         this.hpaymethod = hpaymethod;
         this.hlabel = hlabel;
         this.htime = htime;
-        this.hpid = hpid;
         this.hadress = hadress;
         this.udescribe = udescribe;
-        this.htid = htid;
         this.hstate = hstate;
         this.aid = aid;
     }
@@ -162,13 +160,13 @@ public class House {
         this.htime = htime;
     }
 
-    public String getHpid() {
-        return hpid;
-    }
-
-    public void setHpid(String hpid) {
-        this.hpid = hpid;
-    }
+//    public String getHpid() {
+//        return hpid;
+//    }
+//
+//    public void setHpid(String hpid) {
+//        this.hpid = hpid;
+//    }
 
     public String getHadress() {
         return hadress;
@@ -186,13 +184,13 @@ public class House {
         this.udescribe = udescribe;
     }
 
-    public Integer getHtid() {
-        return htid;
-    }
-
-    public void setHtid(Integer htid) {
-        this.htid = htid;
-    }
+//    public Integer getHtid() {
+//        return htid;
+//    }
+//
+//    public void setHtid(Integer htid) {
+//        this.htid = htid;
+//    }
 
     public Integer getHstate() {
         return hstate;
@@ -225,10 +223,8 @@ public class House {
                 ", hpaymethod='" + hpaymethod + '\'' +
                 ", hlabel='" + hlabel + '\'' +
                 ", htime='" + htime + '\'' +
-                ", hpid='" + hpid + '\'' +
                 ", hadress='" + hadress + '\'' +
                 ", udescribe='" + udescribe + '\'' +
-                ", htid=" + htid +
                 ", hstate=" + hstate +
                 ", aid=" + aid +
                 '}';

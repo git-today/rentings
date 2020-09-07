@@ -147,6 +147,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
+        <!--身份正识别-->
     </dependencies>
 
     <build>

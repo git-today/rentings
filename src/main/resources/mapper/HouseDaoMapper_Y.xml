@@ -150,5 +150,13 @@ AND h.hid !=#{hid} LIMIT 3
     <select id="photo" resultType="com.aaa.entity.House_photo_Y">
         SELECT * FROM house_photo WHERE hid=#{hid};
     </select>
+<!--    <insert id="hid" parameterType="com.aaa.entity.House_Y">-->
+<!--        insert into house() values (#{hid},#{harea},)-->
+<!--    </insert>-->
 
+     <delete  id="hid" parameterType="java.lang.Integer">
+       delete hs,hm,hp from house as hs LEFT JOIN house_mating as hm
+       ON hs.htid = hm.htid LEFT JOIN  house_photo as hp
+       ON hs.hid=hp.hid where hs.hid=#{hid}
+     </delete>
 </mapper>

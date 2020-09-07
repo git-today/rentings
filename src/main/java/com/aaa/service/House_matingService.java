@@ -16,9 +16,13 @@ public class House_matingService {
         return dao.selectAll();
     }
 
-    public int delete(){
-        return dao.delete();
+    public List<House_mating> selectId(int htid){
+        return dao.selectId(htid);
     }
+
+//    public int delete(){
+////        return dao.delete();
+////    }
 
 
 }

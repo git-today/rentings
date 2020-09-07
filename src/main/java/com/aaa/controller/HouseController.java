@@ -29,11 +29,11 @@ public class HouseController {
         return service.selectAll(pageNum,pageSize);
     }
 
-    //前台用户自己添加房源的方法
-    @RequestMapping(value = "insert",method = RequestMethod.POST)
-    public int insert(@RequestBody House house){
-        return service.insert(house);
-    }
+//    //前台用户自己添加房源的方法
+//    @RequestMapping(value = "insert",method = RequestMethod.POST)
+//    public int insert(@RequestBody House house){
+//        return service.insert(house);
+//    }
 
     //删除方法
     @RequestMapping(value = "deleteByPrimaryKey",method = RequestMethod.POST)

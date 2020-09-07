@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import com.aaa.dao.HouseDao_Y;
+import com.aaa.dao.House_matingDao;
 import com.aaa.entity.House_Y;
 import com.aaa.entity.SearchInfo;
 import com.github.pagehelper.PageHelper;
@@ -39,4 +40,17 @@ public class HouseService_Y {
     public List<House_Y> fingOthersHouse(Integer hid){
         return houseDao_y.fingOthersHouse(hid);
     }
+
+    public Integer insert(House_Y house_y){
+        int inadd=houseDao_y.insert(house_y);
+        if(inadd>=1){
+//             int inadd2= House_matingDao.insert()
+        }
+        return 0;
+    }
+
+    public Integer selectmax(){
+        return houseDao_y.querymax();
+    }
+
 }

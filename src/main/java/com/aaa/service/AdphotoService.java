@@ -16,4 +16,6 @@ public class AdphotoService {
     public List<Adphoto> findBidPhoto(){
         return adphotoDao.findBidPhoto();
     }
+
+    public Integer insertPhoto(Adphoto adphoto){return adphotoDao.insert(adphoto);}
 }
